@@ -1,1 +1,1 @@
-var app = angular.module('foodChainApp', []);
+var app = angular.module('foodChainApp', ['ngAutocomplete']);

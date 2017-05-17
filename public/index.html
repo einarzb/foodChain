@@ -4,6 +4,7 @@
 		<title>food chain locator</title>
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAByayWYEm27wPfaEyV7lbqvKFYLvbXCMo"></script>
 		<script type="text/javascript" src="angular/angular.js"></script>
 	</head>
 
@@ -18,7 +19,7 @@
 		    <div class="col-md-6 col-md-offset-3">
 		     	 <form ng-submit="getLocation(location)">
 		             <div class="input-group">
-		                    <input type="text" ng-model="location" class="form-control" placeholder="Enter Location">
+		                    <input type="text" name="location" ng-autocomplete ng-model="location" options="options" details="details" ng-required="true" required class="form-control" placeholder="Enter Location">
 		                    <button type="submit" class="btn btn-primary">Find</button>
 		             </div>
 		          </form> <br>
@@ -29,8 +30,10 @@
 
 
 	<!--scripts-->
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAUVVQ3eq205zrz9RXVZ-OOKnVnehd3cZ4"></script>
-	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <!--google autocomplete location-->
+  <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAUVVQ3eq205zrz9RXVZ-OOKnVnehd3cZ4"></script> -->
+  <script src="ng-autocomplete/src/ngAutocomplete.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
 	<script type="text/javascript" src="js/mainController.js"></script>
 	<script type="text/javascript" src="js/factory.js"></script>
