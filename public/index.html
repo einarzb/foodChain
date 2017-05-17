@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+	<html ng-app="foodChainApp">
+	<head>
+		<title>food chain locator</title>
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<script type="text/javascript" src="angular/angular.js"></script>
+	</head>
+
+	<body ng-controller="mainController">
+		<div class="row">
+			<div class="col-lg-12 col-lg-push-4">
+				 <h2 class="text-center">Store locator</h2>
+			</div>
+		</div>
+
+		  <div class="row">
+		    <div class="col-md-6 col-md-offset-3">
+		     	 <form ng-submit="location(location)">
+		             <div class="input-group">
+		                    <input type="text" ng-model="location" class="find form-control" placeholder="Enter Location">
+		                    <button type="submit" id="name" class="btn btn-primary">Find</button>
+		                </div>
+		          </form> <br>
+		      </div> <!-- end col -->
+		  </div> <!-- end row -->
+
+			<hr>
+
+
+	<!--scripts-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/mainController.js"></script>
+	<script type="text/javascript" src="js/factory.js"></script>
+	</body>
+	</html>
