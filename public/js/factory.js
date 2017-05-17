@@ -10,40 +10,40 @@ var stores = [];
     "success": true,
     "data": [
       {
-        "name": "RamiLevi",
+        "name": "רמי לוי",
         "branches": [
-        {"tel aviv":"tel aviv"},
-        {"jerusalem":"jerusalem"},
-        {"rehovot":"rehovot"},
-        {"ramat gan":"ramat gan"}
+        {"תל אביב":"תל אביב"},
+        {"ירושלים":"ירושלים"},
+        {"רחובות":"רחובות"},
+        {"רמת גן":"רמת גן"}
         ]
       },
       {
-        "name": "Mega",
+        "name": "מגה בעיר",
         "branches": [
-          {"tel aviv":"tel aviv"},
-          {"jerusalem":"jerusalem"},
-          {"rehovot":"rehovot"},
-          {"ramat gan":"ramat gan"}
+          {"תל אביב":"תל אביב"},
+          {"ירושלים":"ירושלים"},
+          {"רחובות":"רחובות"},
+          {"רמת גן":"רמת גן"}
         ]
       },
       {
-        "name": "Shufersal",
+        "name": "שופרסל",
         "branches":[
-          {"tel aviv":"tel aviv"},
-          {"jerusalem":"jerusalem"},
-          {"rehovot":"rehovot"},
-          {"ramat gan":"ramat gan"}
+          {"תל אביב":"תל אביב"},
+          {"ירושלים":"ירושלים"},
+          {"רחובות":"רחובות"},
+          {"רמת גן":"רמת גן"}
         ]
       },
 
       {
-        "name": "Hatzi-Hinam",
+        "name": "חצי חינם",
         "branches": [
-          {"tel aviv":"tel aviv"},
-          {"jerusalem":"jerusalem"},
-          {"rehovot":"rehovot"},
-          {"ramat gan":"ramat gan"}
+          {"תל אביב":"תל אביב"},
+          {"ירושלים":"ירושלים"},
+          {"רחובות":"רחובות"},
+          {"רמת גן":"רמת גן"}
         ]
       },
     ]

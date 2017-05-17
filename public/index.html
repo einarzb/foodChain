@@ -11,13 +11,13 @@
 
     <div class="row">
         <div class="locator col-md-6 col-md-offset-3">
-          <form ng-submit="getLocation(location)">
-                <h3>אתר את רשת המזון הקרובה אליך</h3>
+          <form ng-submit="getLocation(currentLocation)">
+                <h3>אתר את רשת המזון הקרובה אליך לפי מיקומך</h3>
                     <div class="input-group">
-                      <input type="text" name="location" ng-autocomplete ng-model="location" options="options" details="details" ng-required="true" required class="form-control"
-                       placeholder="המיקום שלי">
+                      <input type="text" name="location" ng-autocomplete ng-model="currentLocation" options="options" details="details" ng-required="true" required class="form-control"
+                       placeholder="הזן את מיקומך">
                         <span class="input-group-btn">
-                        <button type="button" class="btn btn-primary">מצא</button>
+                        <button type="submit" class="btn btn-primary">מצא</button>
                         </span>
                     </div>
               </form>
