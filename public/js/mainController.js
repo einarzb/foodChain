@@ -1,4 +1,4 @@
-app.controller('mainController', function($scope, factory, $state) {
+app.controller('mainController', function($scope, factory) {
 $scope.stores = factory.stores;
 $scope.location;
 
