@@ -1,0 +1,43 @@
+
+{
+  "success": true,
+  "data": [
+    {
+      "name": "RamiLevi",
+      "branches": [
+      {"tel aviv":"tel aviv"},
+      {"jerusalem":"jerusalem"},
+      {"rehovot":"rehovot"},
+      {"ramat gan":"ramat gan"}
+      ]
+    },
+    {
+      "name": "Mega",
+      "branches": [
+        {"tel aviv":"tel aviv"},
+        {"jerusalem":"jerusalem"},
+        {"rehovot":"rehovot"},
+        {"ramat gan":"ramat gan"}
+      ]
+    },
+    {
+      "name": "Shufersal",
+      "branches":[
+        {"tel aviv":"tel aviv"},
+        {"jerusalem":"jerusalem"},
+        {"rehovot":"rehovot"},
+        {"ramat gan":"ramat gan"}
+      ]
+    },
+
+    {
+      "name": "Hatzi-Hinam",
+      "branches": [
+        {"tel aviv":"tel aviv"},
+        {"jerusalem":"jerusalem"},
+        {"rehovot":"rehovot"},
+        {"ramat gan":"ramat gan"}
+      ]
+    },
+  ]
+}
