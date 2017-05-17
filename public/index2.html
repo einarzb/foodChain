@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Place searches</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
+    <title>Places Searchbox</title>
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -16,57 +17,179 @@
         margin: 0;
         padding: 0;
       }
+      #description {
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+      }
+
+      #infowindow-content .title {
+        font-weight: bold;
+      }
+
+      #infowindow-content {
+        display: none;
+      }
+
+      #map #infowindow-content {
+        display: inline;
+      }
+
+      .pac-card {
+        margin: 10px 10px 0 0;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        background-color: #fff;
+        font-family: 'Arial';
+
+      }
+
+      #pac-container {
+        padding-bottom: 12px;
+        margin-right: 12px;
+      }
+
+      .pac-controls {
+        display: inline-block;
+        padding: 5px 11px;
+      }
+
+      .pac-controls label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
+
+      #location {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 300px;
+        padding-top:20px;
+
+      }
+
+      #location:focus {
+        border-color: #4d90fe;
+      }
+
+      #title {
+        color: #fff;
+        background-color: #4d90fe;
+        font-size: 25px;
+        font-weight: 500;
+        padding: 6px 12px;
+      }
+      #target {
+        width: 345px;
+      }
     </style>
-    <script>
-      // This example requires the Places library. Include the libraries=places
-      // parameter when you first load the API. For example:
-      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-
-      var map;
-      var infowindow;
-
-      function initMap() {
-        var telaviv = {lat: 32.109333, lng:  34.855499};
-        var jerusalem = {lat:	31.771959, lng:35.217018};
-
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: telaviv,
-          zoom: 15
-        });
-
-        infowindow = new google.maps.InfoWindow();
-        var service = new google.maps.places.PlacesService(map);
-        service.nearbySearch({
-          location: telaviv,
-          radius: 500,
-          type: ['branches']
-        }, callback);
-      }
-
-      function callback(results, status) {
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
-          for (var i = 0; i < results.length; i++) {
-            createMarker(results[i]);
-          }
-        }
-      }
-
-      function createMarker(place) {
-        var placeLoc = place.geometry.location;
-        var marker = new google.maps.Marker({
-          map: map,
-          position: place.geometry.location
-        });
-
-        google.maps.event.addListener(marker, 'click', function() {
-          infowindow.setContent(place.name);
-          infowindow.open(map, this);
-        });
-      }
-    </script>
   </head>
   <body>
+    <input id="location" class="controls" type="text" placeholder="Search Box">
+    <br><br>
     <div id="map"></div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUVVQ3eq205zrz9RXVZ-OOKnVnehd3cZ4&libraries=places&callback=initMap" async defer></script>
+    <script>
+
+      function initAutocomplete() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -33.8688, lng: 151.2195},
+          zoom: 13,
+          mapTypeId: 'roadmap'
+        });
+
+        // Create the search box and link it to the UI element.
+        var input = document.getElementById('location');
+        var searchBox = new google.maps.places.SearchBox(input);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener('bounds_changed', function() {
+          searchBox.setBounds(map.getBounds());
+        });
+
+        var markers = [];
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener('places_changed', function() {
+          var places = searchBox.getPlaces();
+
+          if (places.length == 0) {
+            return;
+          }
+
+          // Clear out the old markers.
+          markers.forEach(function(marker) {
+            marker.setMap(null);
+          });
+          markers = [];
+
+          // For each place, get the icon, name and location.
+          var bounds = new google.maps.LatLngBounds();
+          places.forEach(function(place) {
+            if (!place.geometry) {
+              console.log("Returned place contains no geometry");
+              return;
+            }
+            var icon = {
+              url: place.icon,
+              size: new google.maps.Size(71, 71),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(25, 25)
+            };
+
+            // Create a marker for each place.
+            markers.push(new google.maps.Marker({
+              map: map,
+              icon: icon,
+              title: place.name,
+              position: place.geometry.location,
+              lat: place.geometry.location.lat(),
+              lng: place.geometry.location.lng()
+            }));
+
+            var currentLat = markers[0].lat;
+            var currentLng = markers[0].lng;
+            
+            console.log(currentLat);
+            console.log(currentLng);
+
+            if (place.geometry.viewport) {
+              // Only geocodes have viewport.
+              bounds.union(place.geometry.viewport);
+            } else {
+              bounds.extend(place.geometry.location);
+            }
+          });
+          map.fitBounds(bounds);
+        });
+        // GetLatlong();
+      }
+    //   function GetLatlong()
+    //   {
+    //       var geocoder = new google.maps.Geocoder();
+    //       var address = document.getElementById('textboxid').value;
+    //       console.log(geocoder);
+    //       console.log(address);
+    //       geocoder.geocode({ 'address': address }, function (results, status) {
+    //
+    //           if (status == google.maps.GeocoderStatus.OK) {
+    //               var latitude = results[0].geometry.location.lat();
+    //               var longitude = results[0].geometry.location.lng();
+    //
+    //           }
+    //       });
+    // }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUVVQ3eq205zrz9RXVZ-OOKnVnehd3cZ4&libraries=places&callback=initAutocomplete"
+         async defer></script>
   </body>
 </html>

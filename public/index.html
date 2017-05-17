@@ -11,11 +11,11 @@
 
     <div class="row">
         <div class="locator col-md-6 col-md-offset-3">
-          <form ng-submit="getLocation(currentLocation)">
+          <form ng-submit="GetLatlong(currentLocation)">
                 <h3>אתר את רשת המזון הקרובה אליך לפי מיקומך</h3>
                     <div class="input-group">
-                      <input type="text" name="location" ng-autocomplete ng-model="currentLocation" options="options" details="details" ng-required="true" required class="form-control"
-                       placeholder="הזן את מיקומך">
+                      <input type="text" id="location" name="location" ng-autocomplete ng-model="currentLocation" options="options" details="details" ng-required="true" required class="form-control"
+                       placeholder="הזן את מיקומך" autocomplete="off">
                         <span class="input-group-btn">
                         <button type="submit" class="btn btn-primary">מצא</button>
                         </span>
@@ -37,10 +37,10 @@
 
 	<!--scripts-->
   <!--google autocomplete location and map-->
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAUVVQ3eq205zrz9RXVZ-OOKnVnehd3cZ4"></script>
-
   <script src="ng-autocomplete/src/ngAutocomplete.js"></script>
+
   <script src="angularjs-geolocation/dist/angularjs-geolocation.min.js"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAUVVQ3eq205zrz9RXVZ-OOKnVnehd3cZ4"></script>
   <script src="js/location.js" charset="utf-8"></script>
 
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
