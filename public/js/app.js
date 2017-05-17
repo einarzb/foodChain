@@ -1,1 +1,1 @@
-var app = angular.module('foodChainApp', ['ngAutocomplete']);
+var app = angular.module('foodChainApp', ['ngAutocomplete', 'geolocation']);

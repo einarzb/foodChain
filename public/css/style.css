@@ -2,5 +2,10 @@ html{direction: rtl;}
 input[type="text"] {
   width:100px;
 }
+#map {
+       height: 100%;
+       cursor: url(https://maps.gstatic.com/mapfiles/openhand_8_8.cur) 8 8, default;
+
+     }
 
 .locator {margin-top:200px;}
