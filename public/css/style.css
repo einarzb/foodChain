@@ -1,0 +1,6 @@
+html{direction: rtl;}
+input[type="text"] {
+  width:100px;
+}
+
+.locator {margin-top:200px;}

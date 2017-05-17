@@ -4,34 +4,41 @@
 		<title>food chain locator</title>
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAByayWYEm27wPfaEyV7lbqvKFYLvbXCMo"></script>
 		<script type="text/javascript" src="angular/angular.js"></script>
 	</head>
 
-	<body ng-controller="mainController">
-		<div class="row">
-			<div class="col-lg-12 col-lg-push-4">
-				 <h2 class="text-center">Store locator</h2>
-			</div>
-		</div>
+	<body ng-controller="mainController" class="ng-cloak">
 
-		  <div class="row">
-		    <div class="col-md-6 col-md-offset-3">
-		     	 <form ng-submit="getLocation(location)">
-		             <div class="input-group">
-		                    <input type="text" name="location" ng-autocomplete ng-model="location" options="options" details="details" ng-required="true" required class="form-control" placeholder="Enter Location">
-		                    <button type="submit" class="btn btn-primary">Find</button>
-		             </div>
-		          </form> <br>
-		      </div> <!-- end col -->
-		  </div> <!-- end row -->
+    <div class="row">
+        <div class="locator col-md-6 col-md-offset-3">
+          <form ng-submit="getLocation(location)">
+                <h3>אתר את רשת המזון הקרובה אליך</h3>
+                    <div class="input-group">
+                      <input type="text" name="location" ng-autocomplete ng-model="location" options="options" details="details" ng-required="true" required class="form-control"
+                       placeholder="המיקום שלי">
+                        <span class="input-group-btn">
+                        <button type="button" class="btn btn-primary">מצא</button>
+                        </span>
+                    </div>
+              </form>
+          </div> <!-- end col -->
+   </div> <!-- end row -->
 
-			<hr>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+              <div class="cityDisplay"></div>
+              <div class="commentsDisplay"></div>
+    </div>
+  </div>
+
+
+
+
 
 
 	<!--scripts-->
   <!--google autocomplete location-->
-  <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAUVVQ3eq205zrz9RXVZ-OOKnVnehd3cZ4"></script> -->
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAUVVQ3eq205zrz9RXVZ-OOKnVnehd3cZ4"></script>
   <script src="ng-autocomplete/src/ngAutocomplete.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
